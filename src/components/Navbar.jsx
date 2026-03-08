@@ -46,7 +46,7 @@ const Navbar = () => {
     { name: 'Class 9-10', link: '/class-9-10' },
     { name: 'HSC', link: '/hsc' },
     { name: 'Honours', link: '/honours' },
-    { name: 'Masters', link: '/category/masters' }
+    { name: 'Masters', link: '/masters' }
   ];
 
   const admissionDropdown = [

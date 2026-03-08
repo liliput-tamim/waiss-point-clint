@@ -17,6 +17,7 @@ const ClassContentManagement = () => {
     { id: 'class-9-10', name: 'Class 9-10', nameBn: 'নবম-দশম শ্রেণি' },
     { id: 'hsc', name: 'HSC', nameBn: 'একাদশ-দ্বাদশ শ্রেণি' },
     { id: 'honours', name: 'Honours', nameBn: 'স্নাতক সম্মান' },
+    { id: 'masters', name: 'Masters', nameBn: 'স্নাতকোত্তর' },
   ];
 
   const defaultSubjects = {
@@ -144,6 +145,35 @@ const ClassContentManagement = () => {
       { id: 'honours-constitutional-law', title: 'সংবিধান আইন', titleEn: 'Constitutional Law', icon: '⚖️', faculty: 'law', year: 'all' },
       { id: 'honours-criminal-law', title: 'ফৌজদারি আইন', titleEn: 'Criminal Law', icon: '🔨', faculty: 'law', year: 'all' },
       { id: 'honours-civil-law', title: 'দেওয়ানি আইন', titleEn: 'Civil Law', icon: '📜', faculty: 'law', year: 'all' },
+    ],
+    'masters': [
+      // MA Program
+      { id: 'masters-bangla', title: 'বাংলা', titleEn: 'Bangla', icon: '📚', program: 'ma' },
+      { id: 'masters-english', title: 'ইংরেজি', titleEn: 'English', icon: '📖', program: 'ma' },
+      { id: 'masters-history', title: 'ইতিহাস', titleEn: 'History', icon: '🏛️', program: 'ma' },
+      { id: 'masters-political', title: 'রাষ্ট্রবিজ্ঞান', titleEn: 'Political Science', icon: '🏛️', program: 'ma' },
+      { id: 'masters-philosophy', title: 'দর্শন', titleEn: 'Philosophy', icon: '🤔', program: 'ma' },
+      // MSS Program
+      { id: 'masters-economics', title: 'অর্থনীতি', titleEn: 'Economics', icon: '📈', program: 'mss' },
+      { id: 'masters-sociology', title: 'সমাজবিজ্ঞান', titleEn: 'Sociology', icon: '👥', program: 'mss' },
+      { id: 'masters-public-admin', title: 'লোকপ্রশাসন', titleEn: 'Public Administration', icon: '🏢', program: 'mss' },
+      // MSc Program
+      { id: 'masters-math', title: 'গণিত', titleEn: 'Mathematics', icon: '🔢', program: 'msc' },
+      { id: 'masters-physics', title: 'পদার্থবিজ্ঞান', titleEn: 'Physics', icon: '⚛️', program: 'msc' },
+      { id: 'masters-chemistry', title: 'রসায়ন', titleEn: 'Chemistry', icon: '🧪', program: 'msc' },
+      { id: 'masters-botany', title: 'উদ্ভিদবিজ্ঞান', titleEn: 'Botany', icon: '🌱', program: 'msc' },
+      { id: 'masters-zoology', title: 'প্রাণিবিজ্ঞান', titleEn: 'Zoology', icon: '🐾', program: 'msc' },
+      { id: 'masters-statistics', title: 'পরিসংখ্যান', titleEn: 'Statistics', icon: '📊', program: 'msc' },
+      // MBA Program
+      { id: 'masters-management', title: 'ম্যানেজমেন্ট', titleEn: 'Management', icon: '💼', program: 'mba' },
+      { id: 'masters-accounting', title: 'অ্যাকাউন্টিং', titleEn: 'Accounting', icon: '📊', program: 'mba' },
+      { id: 'masters-marketing', title: 'মার্কেটিং', titleEn: 'Marketing', icon: '📢', program: 'mba' },
+      { id: 'masters-finance', title: 'ফিন্যান্স', titleEn: 'Finance', icon: '💰', program: 'mba' },
+      { id: 'masters-banking', title: 'ব্যাংকিং', titleEn: 'Banking', icon: '🏦', program: 'mba' },
+      // LLM Program
+      { id: 'masters-con-law', title: 'সংবিধান আইন', titleEn: 'Constitutional Law', icon: '⚖️', program: 'llm' },
+      { id: 'masters-criminal-law', title: 'ফৌজদারি আইন', titleEn: 'Criminal Law', icon: '🔨', program: 'llm' },
+      { id: 'masters-intl-law', title: 'আন্তর্জাতিক আইন', titleEn: 'International Law', icon: '🌍', program: 'llm' },
     ],
   };
 

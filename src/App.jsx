@@ -23,6 +23,7 @@ import Class9_10Group from './pages/Class9_10Group';
 import Hsc from './pages/Hsc';
 import HscGroup from './pages/HscGroup';
 import Honours from './pages/Honours';
+import Masters from './pages/Masters';
 import SubjectPage from './pages/SubjectPage';
 import './App.css';
 
@@ -283,6 +284,54 @@ function App() {
           
           {/* Honours Year Pages */}
           <Route path="/honours/:faculty/:subject/:year" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <SubjectPage />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Masters Page */}
+          <Route path="/masters" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <Masters />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Masters Program Pages */}
+          <Route path="/masters/:program" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <Masters />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Masters Subject Pages */}
+          <Route path="/masters/:program/:subject" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <SubjectPage />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Masters Semester Pages */}
+          <Route path="/masters/:program/:subject/:semester" element={
             <>
               <Navbar />
               <ContentFadeIn>
