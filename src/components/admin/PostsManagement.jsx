@@ -6,6 +6,23 @@ import { motion } from 'framer-motion';
 
 const API_URL = 'http://localhost:3000';
 
+const categoriesList = [
+  { id: 'class-6', name: 'Class 6' },
+  { id: 'class-7', name: 'Class 7' },
+  { id: 'class-8', name: 'Class 8' },
+  { id: 'class-9-10', name: 'Class 9-10' },
+  { id: 'hsc', name: 'HSC' },
+  { id: 'honours', name: 'Honours' },
+  { id: 'admission', name: 'Admission' },
+  { id: 'job', name: 'Job' },
+  { id: 'scholarship', name: 'Scholarship' },
+  { id: 'bcs', name: 'BCS' },
+  { id: 'ict', name: 'ICT' },
+  { id: 'news', name: 'News' },
+  { id: 'notice', name: 'Notice' },
+  { id: 'general', name: 'General' }
+];
+
 const PostsManagement = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +36,11 @@ const PostsManagement = () => {
     category: '',
     excerpt: '',
     content: '',
+    header: '',
+    body: '',
+    footer: '',
     image: '',
+    fileUrl: '',
     status: 'Published',
     views: 0,
     likes: 0
@@ -60,7 +81,11 @@ const PostsManagement = () => {
         category: '',
         excerpt: '',
         content: '',
+        header: '',
+        body: '',
+        footer: '',
         image: '',
+        fileUrl: '',
         status: 'Published',
         views: 0,
         likes: 0
@@ -79,8 +104,12 @@ const PostsManagement = () => {
       author: post.author,
       category: post.category,
       excerpt: post.excerpt || '',
-      content: post.content,
+      content: post.content || '',
+      header: post.header || '',
+      body: post.body || '',
+      footer: post.footer || '',
       image: post.image || '',
+      fileUrl: post.fileUrl || '',
       status: post.status || 'Published',
       views: post.views || 0,
       likes: post.likes || 0
@@ -99,7 +128,11 @@ const PostsManagement = () => {
         category: '',
         excerpt: '',
         content: '',
+        header: '',
+        body: '',
+        footer: '',
         image: '',
+        fileUrl: '',
         status: 'Published',
         views: 0,
         likes: 0
@@ -190,14 +223,9 @@ const PostsManagement = () => {
               className="px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition"
             >
               <option value="">All Categories</option>
-              <option>একাডেমিক</option>
-              <option>ভর্তি</option>
-              <option>চাকরি</option>
-              <option>বৃত্তি</option>
-              <option>আইসিটি</option>
-              <option>বিসিএস</option>
-              <option>নোটিশ</option>
-              <option>ফলাফল</option>
+              {categoriesList.map((cat) => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -344,27 +372,37 @@ const PostsManagement = () => {
                     required
                   >
                     <option value="">Select Category</option>
-                    <option>একাডেমিক</option>
-                    <option>ভর্তি</option>
-                    <option>চাকরি</option>
-                    <option>বৃত্তি</option>
-                    <option>আইসিটি</option>
-                    <option>বিসিএস</option>
-                    <option>নোটিশ</option>
-                    <option>ফলাফল</option>
+                    {categoriesList.map((cat) => (
+                      <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
                   </select>
                 </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Image URL</label>
-                  <div className="relative">
-                    <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <input 
-                      type="text" 
-                      placeholder="https://example.com/image.jpg"
-                      className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition"
-                      value={formData.image}
-                      onChange={(e) => setFormData({...formData, image: e.target.value})}
-                    />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Image URL</label>
+                    <div className="relative">
+                      <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input 
+                        type="text" 
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition"
+                        value={formData.image}
+                        onChange={(e) => setFormData({...formData, image: e.target.value})}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">File URL (PDF/Drive)</label>
+                    <div className="relative">
+                      <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input 
+                        type="text" 
+                        placeholder="https://drive.google.com/..."
+                        className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition"
+                        value={formData.fileUrl}
+                        onChange={(e) => setFormData({...formData, fileUrl: e.target.value})}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -378,12 +416,35 @@ const PostsManagement = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Content</label>
-                  <textarea 
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition h-40"
-                    value={formData.content}
-                    onChange={(e) => setFormData({...formData, content: e.target.value})}
-                    required
-                  ></textarea>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Header</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition h-20"
+                        value={formData.header}
+                        onChange={(e) => setFormData({...formData, header: e.target.value})}
+                        placeholder="Intro/Header content..."
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Body (Main Content)</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition h-40"
+                        value={formData.body}
+                        onChange={(e) => setFormData({...formData, body: e.target.value})}
+                        placeholder="Main content..."
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Footer</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-emerald-500/50 transition h-20"
+                        value={formData.footer}
+                        onChange={(e) => setFormData({...formData, footer: e.target.value})}
+                        placeholder="Conclusion/Footer content..."
+                      ></textarea>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>
@@ -462,27 +523,37 @@ const PostsManagement = () => {
                     required
                   >
                     <option value="">Select Category</option>
-                    <option>একাডেমিক</option>
-                    <option>ভর্তি</option>
-                    <option>চাকরি</option>
-                    <option>বৃত্তি</option>
-                    <option>আইসিটি</option>
-                    <option>বিসিএস</option>
-                    <option>নোটিশ</option>
-                    <option>ফলাফল</option>
+                    {categoriesList.map((cat) => (
+                      <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
                   </select>
                 </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">Image URL</label>
-                  <div className="relative">
-                    <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <input 
-                      type="text" 
-                      placeholder="https://example.com/image.jpg"
-                      className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition"
-                      value={formData.image}
-                      onChange={(e) => setFormData({...formData, image: e.target.value})}
-                    />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Image URL</label>
+                    <div className="relative">
+                      <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input 
+                        type="text" 
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition"
+                        value={formData.image}
+                        onChange={(e) => setFormData({...formData, image: e.target.value})}
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">File URL (PDF/Drive)</label>
+                    <div className="relative">
+                      <FiImage className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input 
+                        type="text" 
+                        placeholder="https://drive.google.com/..."
+                        className="w-full pl-12 pr-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition"
+                        value={formData.fileUrl}
+                        onChange={(e) => setFormData({...formData, fileUrl: e.target.value})}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -496,12 +567,35 @@ const PostsManagement = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Content</label>
-                  <textarea 
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition h-40"
-                    value={formData.content}
-                    onChange={(e) => setFormData({...formData, content: e.target.value})}
-                    required
-                  ></textarea>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Header</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition h-20"
+                        value={formData.header}
+                        onChange={(e) => setFormData({...formData, header: e.target.value})}
+                        placeholder="Intro/Header content..."
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Body (Main Content)</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition h-40"
+                        value={formData.body}
+                        onChange={(e) => setFormData({...formData, body: e.target.value})}
+                        placeholder="Main content..."
+                      ></textarea>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-500 mb-1">Footer</label>
+                      <textarea 
+                        className="w-full px-4 py-3 bg-gray-100 border-0 rounded-xl focus:ring-2 focus:ring-blue-500/50 transition h-20"
+                        value={formData.footer}
+                        onChange={(e) => setFormData({...formData, footer: e.target.value})}
+                        placeholder="Conclusion/Footer content..."
+                      ></textarea>
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Status</label>

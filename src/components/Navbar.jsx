@@ -38,16 +38,41 @@ const Navbar = () => {
     { title: 'Admission', items: ['Admission Exam', 'Scholarship', 'Study Tips', 'Career Guideline', 'PDF Notes'] }
   ];
 
+  // Individual dropdown data for Academic, Admission, Jobs
+  const academicDropdown = [
+    { name: 'Class 6', link: '/class-6' },
+    { name: 'Class 7', link: '/class-7' },
+    { name: 'Class 8', link: '/class-8' },
+    { name: 'Class 9-10', link: '/class-9-10' },
+    { name: 'HSC', link: '/category/hsc' },
+    { name: 'Honours', link: '/category/honours' },
+    { name: 'Masters', link: '/category/masters' }
+  ];
+
+  const admissionDropdown = [
+    { name: 'Admission Exam', link: '/category/admission-exam' },
+    { name: 'Scholarship', link: '/category/scholarship' },
+    { name: 'Study Tips', link: '/category/study-tips' },
+    { name: 'Career Guideline', link: '/category/career-guideline' },
+    { name: 'PDF Notes', link: '/category/pdf-notes' }
+  ];
+
+  const jobsDropdown = [
+    { name: 'BCS Preparation', link: '/category/bcs-preparation' },
+    { name: 'Govt Job', link: '/category/govt-job' },
+    { name: 'Bank Job', link: '/category/bank-job' },
+    { name: 'Private Job', link: '/category/private-job' },
+    { name: 'ICT Tutorials', link: '/category/ict-tutorials' }
+  ];
+
   const menuItems = [
     { name: 'Home', link: '/' },
-    { name: 'Categories', dropdown: 'mega' },
-    { name: 'Academic', link: '/category/academic' },
-    { name: 'Admission', link: '/category/admission' },
-    { name: 'Jobs', link: '/category/jobs' },
+    { name: 'Academic', dropdown: 'academic', items: academicDropdown },
+    { name: 'Admission', dropdown: 'admission', items: admissionDropdown },
+    { name: 'Jobs', dropdown: 'jobs', items: jobsDropdown },
     { name: 'Results', link: '/category/results' },
     { name: 'Scholarships', link: '/category/scholarships' },
     { name: 'ICT & Tech', link: '/category/ict' },
-    { name: 'Blog', link: '/blog' },
     { name: 'Contact', link: '/contact' }
   ];
 
@@ -101,7 +126,7 @@ const Navbar = () => {
                     onMouseEnter={() => setActiveDropdown(item.name)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    {item.link ? (
+                    {item.link && !item.dropdown ? (
                       <Link 
                         to={item.link}
                         className={`px-4 py-2 flex items-center gap-1 transition-all text-sm font-medium ${
@@ -117,7 +142,7 @@ const Navbar = () => {
                       </button>
                     )}
 
-                    {/* Mega Menu */}
+                    {/* Mega Menu (Categories) */}
                     {item.dropdown === 'mega' && activeDropdown === item.name && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -141,6 +166,66 @@ const Navbar = () => {
                             </div>
                           ))}
                         </div>
+                      </motion.div>
+                    )}
+
+                    {/* Academic Dropdown */}
+                    {item.dropdown === 'academic' && activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute left-0 top-full mt-2 w-48 bg-white rounded-xl shadow-2xl p-2 border border-gray-100"
+                      >
+                        {item.items.map((subItem, j) => (
+                          <Link 
+                            key={j} 
+                            to={subItem.link}
+                            className="block py-2.5 px-4 rounded-lg hover:bg-emerald-50 hover:text-emerald-600 transition text-sm text-gray-700 font-medium"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+
+                    {/* Admission Dropdown */}
+                    {item.dropdown === 'admission' && activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute left-0 top-full mt-2 w-48 bg-white rounded-xl shadow-2xl p-2 border border-gray-100"
+                      >
+                        {item.items.map((subItem, j) => (
+                          <Link 
+                            key={j} 
+                            to={subItem.link}
+                            className="block py-2.5 px-4 rounded-lg hover:bg-emerald-50 hover:text-emerald-600 transition text-sm text-gray-700 font-medium"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+
+                    {/* Jobs Dropdown */}
+                    {item.dropdown === 'jobs' && activeDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute left-0 top-full mt-2 w-48 bg-white rounded-xl shadow-2xl p-2 border border-gray-100"
+                      >
+                        {item.items.map((subItem, j) => (
+                          <Link 
+                            key={j} 
+                            to={subItem.link}
+                            className="block py-2.5 px-4 rounded-lg hover:bg-emerald-50 hover:text-emerald-600 transition text-sm text-gray-700 font-medium"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
                       </motion.div>
                     )}
                   </li>
@@ -258,7 +343,7 @@ const Navbar = () => {
                 <ul className="space-y-2">
                   {menuItems.map((item, idx) => (
                     <li key={idx}>
-                      {item.link ? (
+                      {item.link && !item.dropdown ? (
                         <Link
                           to={item.link}
                           className="block w-full px-4 py-3 text-left hover:bg-emerald-50 rounded-xl font-medium text-gray-700 hover:text-emerald-600 transition"
@@ -277,6 +362,45 @@ const Navbar = () => {
                                   className="block px-4 py-2 hover:bg-emerald-50 rounded-lg text-sm text-gray-600 hover:text-emerald-600 transition"
                                 >
                                   {subItem}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                          {item.dropdown === 'academic' && (
+                            <div className="pl-4 space-y-1">
+                              {item.items.map((subItem, j) => (
+                                <Link
+                                  key={j}
+                                  to={subItem.link}
+                                  className="block px-4 py-2 hover:bg-emerald-50 rounded-lg text-sm text-gray-600 hover:text-emerald-600 transition"
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                          {item.dropdown === 'admission' && (
+                            <div className="pl-4 space-y-1">
+                              {item.items.map((subItem, j) => (
+                                <Link
+                                  key={j}
+                                  to={subItem.link}
+                                  className="block px-4 py-2 hover:bg-emerald-50 rounded-lg text-sm text-gray-600 hover:text-emerald-600 transition"
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                          {item.dropdown === 'jobs' && (
+                            <div className="pl-4 space-y-1">
+                              {item.items.map((subItem, j) => (
+                                <Link
+                                  key={j}
+                                  to={subItem.link}
+                                  className="block px-4 py-2 hover:bg-emerald-50 rounded-lg text-sm text-gray-600 hover:text-emerald-600 transition"
+                                >
+                                  {subItem.name}
                                 </Link>
                               ))}
                             </div>

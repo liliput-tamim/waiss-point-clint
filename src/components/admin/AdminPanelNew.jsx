@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   FiHome, FiFileText, FiUsers, FiMessageSquare, FiSettings, 
-  FiLogOut, FiMenu, FiX, FiBarChart2, FiBell, FiSearch, FiChevronDown 
+  FiLogOut, FiMenu, FiX, FiBarChart2, FiBell, FiSearch, FiChevronDown, FiBook
 } from 'react-icons/fi';
 import AdminDashboardNew from './AdminDashboardNew';
 import PostsManagement from './PostsManagement';
 import UsersManagement from './UsersManagement';
 import CommentsManagement from './CommentsManagement';
+import ClassContentManagement from './ClassContentManagement';
 
 const AdminPanelNew = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -37,6 +38,7 @@ const AdminPanelNew = () => {
   const menuItems = [
     { name: 'Dashboard', icon: FiHome, path: '/admin', roles: ['admin', 'manager'] },
     { name: 'Posts', icon: FiFileText, path: '/admin/posts', roles: ['admin', 'manager'] },
+    { name: 'Class Content', icon: FiBook, path: '/admin/class-content', roles: ['admin', 'manager'] },
     { name: 'Users', icon: FiUsers, path: '/admin/users', roles: ['admin'] },
     { name: 'Comments', icon: FiMessageSquare, path: '/admin/comments', roles: ['admin', 'manager'] },
     { name: 'Analytics', icon: FiBarChart2, path: '/admin/analytics', roles: ['admin'] },
@@ -51,6 +53,7 @@ const AdminPanelNew = () => {
     const currentItem = filteredMenu.find(item => item.path === location.pathname);
     if (currentItem) return currentItem.name;
     if (location.pathname.includes('posts')) return 'Posts Management';
+    if (location.pathname.includes('class-content')) return 'Class Content';
     if (location.pathname.includes('users')) return 'Users Management';
     if (location.pathname.includes('comments')) return 'Comments Management';
     return 'Dashboard';
@@ -207,6 +210,7 @@ const AdminPanelNew = () => {
             <Routes>
               <Route path="/" element={<AdminDashboardNew />} />
               <Route path="/posts" element={<PostsManagement />} />
+              <Route path="/class-content" element={<ClassContentManagement />} />
               <Route path="/users" element={<UsersManagement />} />
               <Route path="/comments" element={<CommentsManagement />} />
             </Routes>
