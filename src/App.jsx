@@ -24,6 +24,7 @@ import Hsc from './pages/Hsc';
 import HscGroup from './pages/HscGroup';
 import Honours from './pages/Honours';
 import Masters from './pages/Masters';
+import AdmissionExam from './pages/AdmissionExam';
 import SubjectPage from './pages/SubjectPage';
 import './App.css';
 
@@ -332,6 +333,42 @@ function App() {
           
           {/* Masters Semester Pages */}
           <Route path="/masters/:program/:subject/:semester" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <SubjectPage />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Admission Exam Page */}
+          <Route path="/admission" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <AdmissionExam />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Admission Exam Category Pages */}
+          <Route path="/admission/:category" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <AdmissionExam />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Admission Exam Detail Pages */}
+          <Route path="/admission/:category/:exam" element={
             <>
               <Navbar />
               <ContentFadeIn>

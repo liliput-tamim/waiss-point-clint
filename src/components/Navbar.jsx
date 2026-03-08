@@ -50,7 +50,7 @@ const Navbar = () => {
   ];
 
   const admissionDropdown = [
-    { name: 'Admission Exam', link: '/category/admission-exam' },
+    { name: 'Admission Exam', link: '/admission' },
     { name: 'Scholarship', link: '/category/scholarship' },
     { name: 'Study Tips', link: '/category/study-tips' },
     { name: 'Career Guideline', link: '/category/career-guideline' },

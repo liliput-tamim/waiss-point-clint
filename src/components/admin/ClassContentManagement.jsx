@@ -18,6 +18,7 @@ const ClassContentManagement = () => {
     { id: 'hsc', name: 'HSC', nameBn: 'একাদশ-দ্বাদশ শ্রেণি' },
     { id: 'honours', name: 'Honours', nameBn: 'স্নাতক সম্মান' },
     { id: 'masters', name: 'Masters', nameBn: 'স্নাতকোত্তর' },
+    { id: 'admission', name: 'Admission Exam', nameBn: 'ভর্তি পরীক্ষা' },
   ];
 
   const defaultSubjects = {
@@ -174,6 +175,30 @@ const ClassContentManagement = () => {
       { id: 'masters-con-law', title: 'সংবিধান আইন', titleEn: 'Constitutional Law', icon: '⚖️', program: 'llm' },
       { id: 'masters-criminal-law', title: 'ফৌজদারি আইন', titleEn: 'Criminal Law', icon: '🔨', program: 'llm' },
       { id: 'masters-intl-law', title: 'আন্তর্জাতিক আইন', titleEn: 'International Law', icon: '🌍', program: 'llm' },
+    ],
+    'admission': [
+      // University Admission
+      { id: 'admission-bu', title: 'বিশ্ববিদ্যালয় ভর্তি', titleEn: 'BU Admission', icon: '🎓', category: 'university' },
+      { id: 'admission-du', title: 'ঢাকা বিশ্ববিদ্যালয়', titleEn: 'DU Admission', icon: '🎓', category: 'university' },
+      { id: 'admission-cu', title: 'চট্টগ্রাম বিশ্ববিদ্যালয়', titleEn: 'CU Admission', icon: '🎓', category: 'university' },
+      { id: 'admission-ru', title: 'রাজশাহী বিশ্ববিদ্যালয়', titleEn: 'RU Admission', icon: '🎓', category: 'university' },
+      { id: 'admission-medical', title: 'মেডিকেল কলেজ', titleEn: 'Medical College', icon: '🏥', category: 'university' },
+      { id: 'admission-engineering', title: 'ইঞ্জিনিয়ারিং বিশ্ববিদ্যালয়', titleEn: 'Engineering University', icon: '🔧', category: 'university' },
+      // BCS
+      { id: 'admission-bcs-notice', title: 'বিসিএস নোটিশ', titleEn: 'BCS Notice', icon: '📋', category: 'bcs' },
+      { id: 'admission-bcs-syllabus', title: 'বিসিএস সিলেবাস', titleEn: 'BCS Syllabus', icon: '📜', category: 'bcs' },
+      { id: 'admission-bcs-question', title: 'বিগত বছরের প্রশ্ন', titleEn: 'Previous Questions', icon: '❓', category: 'bcs' },
+      { id: 'admission-bcs-notes', title: 'বিসিএস নোটস', titleEn: 'BCS Notes', icon: '📝', category: 'bcs' },
+      { id: 'admission-bcs-model-test', title: 'মডেল টেস্ট', titleEn: 'Model Test', icon: '✍️', category: 'bcs' },
+      // Jobs
+      { id: 'admission-bank-job', title: 'ব্যাংক জব', titleEn: 'Bank Job', icon: '🏦', category: 'jobs' },
+      { id: 'admission-govt-job', title: 'সরকারি চাকরি', titleEn: 'Government Job', icon: '🏛️', category: 'jobs' },
+      { id: 'admission-ngo-job', title: 'এনজিও চাকরি', titleEn: 'NGO Job', icon: '🤝', category: 'jobs' },
+      { id: 'admission-defense', title: 'প্রতিরক্ষা বাহিনী', titleEn: 'Defense Forces', icon: '🛡️', category: 'jobs' },
+      // Scholarship
+      { id: 'admission-merit-scholarship', title: 'মেধা বৃত্তি', titleEn: 'Merit Scholarship', icon: '🏆', category: 'scholarship' },
+      { id: 'admission-financial-aid', title: 'আর্থিক সহায়তা', titleEn: 'Financial Aid', icon: '💰', category: 'scholarship' },
+      { id: 'admission-int-scholarship', title: 'আন্তর্জাতিক বৃত্তি', titleEn: 'International Scholarship', icon: '🌍', category: 'scholarship' },
     ],
   };
 
