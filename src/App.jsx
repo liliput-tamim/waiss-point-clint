@@ -22,6 +22,7 @@ import Class9_10 from './pages/Class9_10';
 import Class9_10Group from './pages/Class9_10Group';
 import Hsc from './pages/Hsc';
 import HscGroup from './pages/HscGroup';
+import Honours from './pages/Honours';
 import SubjectPage from './pages/SubjectPage';
 import './App.css';
 
@@ -234,6 +235,54 @@ function App() {
           
           {/* HSC Subject Pages */}
           <Route path="/hsc/:group/:subject" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <SubjectPage />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Honours Page */}
+          <Route path="/honours" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <Honours />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Honours Faculty Pages */}
+          <Route path="/honours/:faculty" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <Honours />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Honours Subject Pages */}
+          <Route path="/honours/:faculty/:subject" element={
+            <>
+              <Navbar />
+              <ContentFadeIn>
+                <SubjectPage />
+              </ContentFadeIn>
+              <Newsletter />
+              <Footer />
+            </>
+          } />
+          
+          {/* Honours Year Pages */}
+          <Route path="/honours/:faculty/:subject/:year" element={
             <>
               <Navbar />
               <ContentFadeIn>

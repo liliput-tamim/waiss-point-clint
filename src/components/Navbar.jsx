@@ -44,8 +44,8 @@ const Navbar = () => {
     { name: 'Class 7', link: '/class-7' },
     { name: 'Class 8', link: '/class-8' },
     { name: 'Class 9-10', link: '/class-9-10' },
-    { name: 'HSC', link: '/category/hsc' },
-    { name: 'Honours', link: '/category/honours' },
+    { name: 'HSC', link: '/hsc' },
+    { name: 'Honours', link: '/honours' },
     { name: 'Masters', link: '/category/masters' }
   ];
 

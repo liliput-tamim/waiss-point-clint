@@ -15,6 +15,8 @@ const ClassContentManagement = () => {
     { id: 'class-7', name: 'Class 7', nameBn: 'সপ্তম শ্রেণি' },
     { id: 'class-8', name: 'Class 8', nameBn: 'অষ্টম শ্রেণি' },
     { id: 'class-9-10', name: 'Class 9-10', nameBn: 'নবম-দশম শ্রেণি' },
+    { id: 'hsc', name: 'HSC', nameBn: 'একাদশ-দ্বাদশ শ্রেণি' },
+    { id: 'honours', name: 'Honours', nameBn: 'স্নাতক সম্মান' },
   ];
 
   const defaultSubjects = {
@@ -74,6 +76,74 @@ const ClassContentManagement = () => {
       { id: 'biology', title: 'জীববিজ্ঞান', titleEn: 'Biology', icon: '🧬' },
       { id: 'higher-math', title: 'উচ্চতর গণিত', titleEn: 'Higher Math', icon: '📐' },
       { id: 'ict', title: 'ICT', titleEn: 'ICT', icon: '💻' },
+    ],
+    'hsc': [
+      // Science Group
+      { id: 'hsc-physics-1st', title: 'পদার্থবিজ্ঞান ১ম পত্র', titleEn: 'Physics 1st Paper', icon: '⚛️', group: 'science' },
+      { id: 'hsc-physics-2nd', title: 'পদার্থবিজ্ঞান ২য় পত্র', titleEn: 'Physics 2nd Paper', icon: '⚛️', group: 'science' },
+      { id: 'hsc-chemistry-1st', title: 'রসায়ন ১ম পত্র', titleEn: 'Chemistry 1st Paper', icon: '🧪', group: 'science' },
+      { id: 'hsc-chemistry-2nd', title: 'রসায়ন ২য় পত্র', titleEn: 'Chemistry 2nd Paper', icon: '🧪', group: 'science' },
+      { id: 'hsc-biology-1st', title: 'জীববিজ্ঞান ১ম পত্র', titleEn: 'Biology 1st Paper', icon: '🧬', group: 'science' },
+      { id: 'hsc-biology-2nd', title: 'জীববিজ্ঞান ২য় পত্র', titleEn: 'Biology 2nd Paper', icon: '🧬', group: 'science' },
+      { id: 'hsc-higher-math-1st', title: 'উচ্চতর গণিত ১ম পত্র', titleEn: 'Higher Math 1st Paper', icon: '📐', group: 'science' },
+      { id: 'hsc-higher-math-2nd', title: 'উচ্চতর গণিত ২য় পত্র', titleEn: 'Higher Math 2nd Paper', icon: '📐', group: 'science' },
+      { id: 'hsc-bangla-1st', title: 'বাংলা ১ম পত্র', titleEn: 'Bangla 1st Paper', icon: '📚', group: 'science' },
+      { id: 'hsc-bangla-2nd', title: 'বাংলা ২য় পত্র', titleEn: 'Bangla 2nd Paper', icon: '📚', group: 'science' },
+      { id: 'hsc-english-1st', title: 'English 1st Paper', titleEn: 'English 1st Paper', icon: '📖', group: 'science' },
+      { id: 'hsc-english-2nd', title: 'English 2nd Paper', titleEn: 'English 2nd Paper', icon: '📖', group: 'science' },
+      { id: 'hsc-ict', title: 'তথ্য ও যোগাযোগ প্রযুক্তি', titleEn: 'ICT', icon: '💻', group: 'science' },
+      // Business Group
+      { id: 'hsc-accounting-1st', title: 'হিসাববিজ্ঞান ১ম পত্র', titleEn: 'Accounting 1st Paper', icon: '📊', group: 'business' },
+      { id: 'hsc-accounting-2nd', title: 'হিসাববিজ্ঞান ২য় পত্র', titleEn: 'Accounting 2nd Paper', icon: '📊', group: 'business' },
+      { id: 'hsc-business-org-1st', title: 'ব্যবসায় সংগঠন ১ম পত্র', titleEn: 'Business Organization 1st Paper', icon: '💼', group: 'business' },
+      { id: 'hsc-business-org-2nd', title: 'ব্যবসায় সংগঠন ২য় পত্র', titleEn: 'Business Organization 2nd Paper', icon: '💼', group: 'business' },
+      { id: 'hsc-finance-1st', title: 'ফাইন্যান্স ১ম পত্র', titleEn: 'Finance 1st Paper', icon: '💰', group: 'business' },
+      { id: 'hsc-finance-2nd', title: 'ফাইন্যান্স ২য় পত্র', titleEn: 'Finance 2nd Paper', icon: '💰', group: 'business' },
+      { id: 'hsc-bangla-business', title: 'বাংলা', titleEn: 'Bangla', icon: '📚', group: 'business' },
+      { id: 'hsc-english-business', title: 'English', titleEn: 'English', icon: '📖', group: 'business' },
+      { id: 'hsc-ict-business', title: 'তথ্য ও যোগাযোগ প্রযুক্তি', titleEn: 'ICT', icon: '💻', group: 'business' },
+      // Humanities Group
+      { id: 'hsc-history-1st', title: 'ইতিহাস ১ম পত্র', titleEn: 'History 1st Paper', icon: '🏛️', group: 'humanities' },
+      { id: 'hsc-history-2nd', title: 'ইতিহাস ২য় পত্র', titleEn: 'History 2nd Paper', icon: '🏛️', group: 'humanities' },
+      { id: 'hsc-sociology-1st', title: 'সমাজবিজ্ঞান ১ম পত্র', titleEn: 'Sociology 1st Paper', icon: '👥', group: 'humanities' },
+      { id: 'hsc-sociology-2nd', title: 'সমাজবিজ্ঞান ২য় পত্র', titleEn: 'Sociology 2nd Paper', icon: '👥', group: 'humanities' },
+      { id: 'hsc-economics-1st', title: 'অর্থনীতি ১ম পত্র', titleEn: 'Economics 1st Paper', icon: '📈', group: 'humanities' },
+      { id: 'hsc-economics-2nd', title: 'অর্থনীতি ২য় পত্র', titleEn: 'Economics 2nd Paper', icon: '📈', group: 'humanities' },
+      { id: 'hsc-logic-1st', title: 'যুক্তিবিদ্যা ১ম পত্র', titleEn: 'Logic 1st Paper', icon: '🤔', group: 'humanities' },
+      { id: 'hsc-logic-2nd', title: 'যুক্তিবিদ্যা ২য় পত্র', titleEn: 'Logic 2nd Paper', icon: '🤔', group: 'humanities' },
+      { id: 'hsc-bangla-humanities', title: 'বাংলা', titleEn: 'Bangla', icon: '📚', group: 'humanities' },
+      { id: 'hsc-english-humanities', title: 'English', titleEn: 'English', icon: '📖', group: 'humanities' },
+      { id: 'hsc-ict-humanities', title: 'তথ্য ও যোগাযোগ প্রযুক্তি', titleEn: 'ICT', icon: '💻', group: 'humanities' },
+    ],
+    'honours': [
+      // Arts Faculty
+      { id: 'honours-bangla', title: 'বাংলা', titleEn: 'Bangla', icon: '📚', faculty: 'arts', year: 'all' },
+      { id: 'honours-english', title: 'ইংরেজি', titleEn: 'English', icon: '📖', faculty: 'arts', year: 'all' },
+      { id: 'honours-history', title: 'ইতিহাস', titleEn: 'History', icon: '🏛️', faculty: 'arts', year: 'all' },
+      { id: 'honours-philosophy', title: 'দর্শন', titleEn: 'Philosophy', icon: '🤔', faculty: 'arts', year: 'all' },
+      { id: 'honours-islamic-studies', title: 'ইসলামি শিক্ষা', titleEn: 'Islamic Studies', icon: '🕌', faculty: 'arts', year: 'all' },
+      // Social Science Faculty
+      { id: 'honours-economics', title: 'অর্থনীতি', titleEn: 'Economics', icon: '📈', faculty: 'social-science', year: 'all' },
+      { id: 'honours-political-science', title: 'রাষ্ট্রবিজ্ঞান', titleEn: 'Political Science', icon: '🏛️', faculty: 'social-science', year: 'all' },
+      { id: 'honours-sociology', title: 'সমাজবিজ্ঞান', titleEn: 'Sociology', icon: '👥', faculty: 'social-science', year: 'all' },
+      { id: 'honours-geography', title: 'ভূগোল', titleEn: 'Geography', icon: '🌍', faculty: 'social-science', year: 'all' },
+      { id: 'honours-anthropology', title: 'নৃবিজ্ঞান', titleEn: 'Anthropology', icon: '👤', faculty: 'social-science', year: 'all' },
+      // Science Faculty
+      { id: 'honours-math', title: 'গণিত', titleEn: 'Mathematics', icon: '🔢', faculty: 'science', year: 'all' },
+      { id: 'honours-physics', title: 'পদার্থবিজ্ঞান', titleEn: 'Physics', icon: '⚛️', faculty: 'science', year: 'all' },
+      { id: 'honours-chemistry', title: 'রসায়ন', titleEn: 'Chemistry', icon: '🧪', faculty: 'science', year: 'all' },
+      { id: 'honours-botany', title: 'উদ্ভিদবিজ্ঞান', titleEn: 'Botany', icon: '🌱', faculty: 'science', year: 'all' },
+      { id: 'honours-zoology', title: 'প্রাণিবিজ্ঞান', titleEn: 'Zoology', icon: '🐾', faculty: 'science', year: 'all' },
+      // Business Faculty
+      { id: 'honours-management', title: 'ম্যানেজমেন্ট', titleEn: 'Management', icon: '💼', faculty: 'business', year: 'all' },
+      { id: 'honours-accounting', title: 'অ্যাকাউন্টিং', titleEn: 'Accounting', icon: '📊', faculty: 'business', year: 'all' },
+      { id: 'honours-marketing', title: 'মার্কেটিং', titleEn: 'Marketing', icon: '📢', faculty: 'business', year: 'all' },
+      { id: 'honours-finance', title: 'ফিন্যান্স', titleEn: 'Finance', icon: '💰', faculty: 'business', year: 'all' },
+      { id: 'honours-banking', title: 'ব্যাংকিং', titleEn: 'Banking', icon: '🏦', faculty: 'business', year: 'all' },
+      // Law Faculty
+      { id: 'honours-constitutional-law', title: 'সংবিধান আইন', titleEn: 'Constitutional Law', icon: '⚖️', faculty: 'law', year: 'all' },
+      { id: 'honours-criminal-law', title: 'ফৌজদারি আইন', titleEn: 'Criminal Law', icon: '🔨', faculty: 'law', year: 'all' },
+      { id: 'honours-civil-law', title: 'দেওয়ানি আইন', titleEn: 'Civil Law', icon: '📜', faculty: 'law', year: 'all' },
     ],
   };
 
